@@ -22,13 +22,6 @@ RUN apt-get update && apt-get install -yq \
     xautomation \
     libraspberrypi0 \
     libraspberrypi-bin \
-    libgstreamer1.0-0-dbg \
-    gstreamer1.0-tools \
-    libgstreamer-plugins-base1.0-0 \
-    gstreamer1.0-plugins-good \
-    gstreamer1.0-plugins-bad-dbg \
-    gstreamer1.0-omx \
-    gstreamer1.0-alsa \
     epiphany-browser \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
