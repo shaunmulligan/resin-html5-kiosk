@@ -1,4 +1,4 @@
-FROM resin/raspberrypi-systemd:latest
+FROM resin/raspberrypi-systemd:wheezy
 MAINTAINER Shaun Mulligan <shaun@resin.io>
 
 RUN apt-get update && apt-get install -yq \
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -yq \
     epiphany-browser \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV INITSYSTEM on
+ENV INITSYSTEM off
 COPY start.sh start.sh
 COPY src/ /usr/src/app
 

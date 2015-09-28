@@ -1,6 +1,5 @@
-from time import sleep
-print "testing the Lock..."
-
-while 1:
-    print 'waiting'
-    sleep(60)
+while [ 1 ]
+do
+    echo "waiting.."
+    sleep 30
+done
