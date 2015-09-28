@@ -14,8 +14,7 @@ RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/ss
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN echo "http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi" >  /etc/apt/sources.list
-RUN apt-key adv --keyserver pgp.mit.edu  --recv-key 0x9165938D90FDDD2E
+
 RUN apt-get update && apt-get install -yq \
     xorg \
     lxde \
