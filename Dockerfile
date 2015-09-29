@@ -15,18 +15,6 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get --no-install-recommends install -yq \
-    xserver-xorg \
-    xinit \
-    xserver-xorg-video-fbdev \
-    lxde \
-    lxde-common \
-    lightdm \
-    libraspberrypi0 \
-    libraspberrypi-bin \
-    epiphany-browser \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 #install fbturbo as per:
 #https://medium.com/@icebob/jessie-on-raspberry-pi-2-with-docker-and-chromium-c43b8d80e7e1
 RUN apt-get update && apt-get install -yq \
@@ -59,6 +47,18 @@ ENV LC_ALL C
 RUN apt-get update && apt-get update && apt-get install -yq \
     libwebkitgtk-3.0 \
     gstreamer1.0-omx=1.2.0-1 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get --no-install-recommends install -yq \
+    xserver-xorg \
+    xinit \
+    xserver-xorg-video-fbdev \
+    lxde \
+    lxde-common \
+    lightdm \
+    libraspberrypi0 \
+    libraspberrypi-bin \
+    epiphany-browser \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV INITSYSTEM off
