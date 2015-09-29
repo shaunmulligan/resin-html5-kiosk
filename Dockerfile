@@ -1,4 +1,4 @@
-FROM resin/raspberrypi-systemd:wheezy
+FROM resin/raspberrypi-systemd:latest
 MAINTAINER Shaun Mulligan <shaun@resin.io>
 
 RUN apt-get update && apt-get install -yq \
@@ -15,14 +15,38 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -yq \
-    xorg \
+RUN apt-get update && apt-get --no-install-recommends install -yq \
+    xserver-xorg \
+    xinit \
+    xserver-xorg-video-fbdev \
     lxde \
-    xautomation \
+    lxde-common \
+    lightdm \
     libraspberrypi0 \
     libraspberrypi-bin \
     epiphany-browser \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -yq \
+    git \
+    build-essential \
+    xorg-dev \
+    xutils-dev \
+    x11proto-dri2-dev \
+    libltdl-dev \
+    libtool \
+    automake \
+    libdrm-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/ssvb/xf86-video-fbturbo.git && \
+    cd xf86-video-fbturbo && \
+    autoreconf -vi && \
+    ./configure --prefix=/usr && \
+    make && \
+    sudo make install
+
+COPY 99-fbturbo.conf /usr/share/X11/xorg.conf.d/99-fbturbo.conf
 
 RUN echo "deb http://vontaene.de/raspbian-updates/ . main" >>  /etc/apt/sources.list
 RUN cat /etc/apt/sources.list
@@ -30,7 +54,7 @@ RUN gpg --keyserver pgp.mit.edu --recv-keys F0DAA5410C667A3E
 RUN gpg --armor --export F0DAA5410C667A3E | sudo apt-key add -
 
 RUN apt-get update && apt-get install -yq \
-    gstreamer1.0-omx \
+    gstreamer1.0-omx=1.2.0-1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV INITSYSTEM off
