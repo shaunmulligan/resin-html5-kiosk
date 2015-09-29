@@ -27,6 +27,8 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     epiphany-browser \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+#install fbturbo as per:
+#https://medium.com/@icebob/jessie-on-raspberry-pi-2-with-docker-and-chromium-c43b8d80e7e1
 RUN apt-get update && apt-get install -yq \
     git \
     build-essential \
@@ -39,8 +41,8 @@ RUN apt-get update && apt-get install -yq \
     libdrm-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/ssvb/xf86-video-fbturbo.git && \
-    cd xf86-video-fbturbo && \
+COPY /xf86-video-fbturbo/ /xf86-video-fbturbo/
+RUN cd xf86-video-fbturbo && \
     autoreconf -vi && \
     ./configure --prefix=/usr && \
     make && \
