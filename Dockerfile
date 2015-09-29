@@ -1,4 +1,4 @@
-FROM resin/raspberrypi-systemd:latest
+FROM resin/raspberrypi-systemd:wheezy
 MAINTAINER Shaun Mulligan <shaun@resin.io>
 
 RUN apt-get update && apt-get install -yq \
@@ -55,7 +55,9 @@ RUN cat /etc/apt/sources.list
 RUN gpg --keyserver pgp.mit.edu --recv-keys F0DAA5410C667A3E
 RUN gpg --armor --export F0DAA5410C667A3E | sudo apt-key add -
 
-RUN apt-get update && apt-get install -yq \
+ENV LC_ALL C
+RUN apt-get update && apt-get update && apt-get install -yq \
+    libwebkitgtk-3.0 \
     gstreamer1.0-omx=1.2.0-1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
