@@ -68,6 +68,7 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-ugly \
     gstreamer1.0-alsa \
+    gstreamer1.0-pulseaudio \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV INITSYSTEM off
