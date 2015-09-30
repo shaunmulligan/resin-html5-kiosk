@@ -55,6 +55,8 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     x11-xserver-utils \
     xwit \
     fbset \
+    gnome-keyring \
+    libnss3 \
     xinit \
     xserver-xorg-video-fbdev \
     libraspberrypi0 \
