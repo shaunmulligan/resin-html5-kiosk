@@ -15,4 +15,4 @@ gpasswd -a pi video
 
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 #xinit /usr/src/app/startup.sh
-bash /usr/src/app/startBrowser.sh
+bash /usr/src/app/wait.sh
