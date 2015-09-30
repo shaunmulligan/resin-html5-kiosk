@@ -9,7 +9,6 @@ if [ "$INITSYSTEM" != "on" ]; then
   /usr/sbin/sshd &
 fi
 
-
 ldconfig
 useradd -m pi
 gpasswd -a pi video
@@ -17,4 +16,4 @@ gpasswd -a pi video
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 #xinit /usr/src/app/startup.sh
 
-bash /usr/src/app/wait.sh
+bash /usr/src/app/startBrowser.sh
