@@ -61,6 +61,14 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     epiphany-browser \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get --no-install-recommends install -yq \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-alsa \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 ENV INITSYSTEM off
 COPY start.sh start.sh
 COPY src/ /usr/src/app
