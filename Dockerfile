@@ -51,11 +51,12 @@ RUN apt-get update && apt-get update && apt-get install -yq \
 
 RUN apt-get update && apt-get --no-install-recommends install -yq \
     xserver-xorg \
+    matchbox \
+    x11-xserver-utils \
+    xwit \
+    fbset \
     xinit \
     xserver-xorg-video-fbdev \
-    lxde \
-    lxde-common \
-    lightdm \
     libraspberrypi0 \
     libraspberrypi-bin \
     epiphany-browser \
