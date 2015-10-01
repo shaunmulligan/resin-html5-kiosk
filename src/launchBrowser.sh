@@ -3,7 +3,7 @@
 # Disable DPMS / Screen blanking
 xset -dpms
 xset s off
-xset s noblank
+#xset s noblank
 
 mkdir /root/.config
 url=$URL
