@@ -53,7 +53,10 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     xserver-xorg \
     xinit \
     xserver-xorg-video-fbdev \
-    x11-xserver-utils \
+    x11-xserver-utils
+    lxde \
+    lxde-common \
+    lightdm \
     libraspberrypi0 \
     libraspberrypi-bin \
     epiphany-browser \
