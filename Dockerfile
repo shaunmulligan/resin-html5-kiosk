@@ -63,7 +63,6 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     lxde \
     lxde-common \
     lightdm \
-    launching-full-desktop
     libraspberrypi0 \
     libraspberrypi-bin \
     epiphany-browser \
