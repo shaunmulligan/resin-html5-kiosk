@@ -70,9 +70,9 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     gstreamer1.0-alsa \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-    RUN apt-get update && apt-get --no-install-recommends install -yq \
-        matchbox \
-        && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get --no-install-recommends install -yq \
+    matchbox \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV INITSYSTEM off
 COPY start.sh start.sh
