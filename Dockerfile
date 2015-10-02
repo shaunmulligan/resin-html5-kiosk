@@ -59,6 +59,11 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     libnss3 \
     xinit \
     xserver-xorg-video-fbdev \
+    x11-xserver-utils \
+    lxde \
+    lxde-common \
+    lightdm \
+    launching-full-desktop
     libraspberrypi0 \
     libraspberrypi-bin \
     epiphany-browser \
@@ -71,6 +76,10 @@ RUN apt-get update && apt-get --no-install-recommends install -yq \
     gstreamer1.0-plugins-ugly \
     gstreamer1.0-alsa \
     gstreamer1.0-x \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get --no-install-recommends install -yq \
+    matchbox \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV INITSYSTEM off
